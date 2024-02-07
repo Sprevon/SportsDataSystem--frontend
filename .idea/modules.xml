@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SportsDataSystem--frontend.iml" filepath="$PROJECT_DIR$/.idea/SportsDataSystem--frontend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdsf.iml" filepath="$PROJECT_DIR$/sdsf.iml" />
     </modules>
   </component>
 </project>
