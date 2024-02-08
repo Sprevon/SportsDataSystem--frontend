@@ -26,13 +26,24 @@ import TeamDocAdd from "@/components/contextBody/teamDoc/TeamDocAdd.vue";
 import TeamDocEdit from "@/components/contextBody/teamDoc/TeamDocEdit.vue";
 import 'element-plus/theme-chalk/el-loading.css'
 import 'element-plus/theme-chalk/el-message.css'
+import PlayerHealthList from "@/components/contextBody/playerHealth/PlayerHealthList.vue";
+import PlayerHealthAdd from "@/components/contextBody/playerHealth/PlayerHealthAdd.vue";
+import PlayerHealthEdit from "@/components/contextBody/playerHealth/PlayerHealthEdit.vue";
+import PlayerHeartRateList from "@/components/contextBody/playerHeartRate/PlayerHeartRateList.vue";
+import PlayerHeartRateDetail from "@/components/contextBody/playerHeartRate/PlayerHeartRateDetail.vue";
+// import loginPage from "@/components/login/LoginPage.vue";
+import * as echarts from 'echarts'
 
 
 //创建容器
 const app = createApp(App)
 
+//配置echarts
+app.config.globalProperties.$echarts = echarts
+
 //配置axios
 Axios.defaults.baseURL = "http://localhost:8088"
+// Axios.defaults.baseURL = "http://112.124.17.166:8088"
 app.config.globalProperties.$http = Axios
 
 //配置element-icon
@@ -47,7 +58,12 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 
 //配置router
 const routes = [
-    {path: '/', redirect: '/welcome'},
+
+    // {path: '/', redirect: '/login'},
+    // {path: '/login', component: loginPage},
+
+    {path: '/', redirect: '/home'},
+    {path: '/home', redirect: '/welcome'},
     {path: '/welcome', component: Welcome},
 
     {path: '/device', redirect: '/device/deviceList'},
@@ -73,6 +89,16 @@ const routes = [
     {path: '/teamDoc/teamDocList', component: TeamDocList},
     {path: '/teamDoc/teamDocAdd', component: TeamDocAdd},
     {path: '/teamDoc/teamDocEdit/:docId', component: TeamDocEdit},
+
+    {path: '/playerHealth', redirect: '/playerHealth/playerHealthList'},
+    {path: '/playerHealth/playerHealthList', component: PlayerHealthList},
+    {path: '/playerHealth/playerHealthAdd', component: PlayerHealthAdd},
+    {path: '/playerHealth/playerHealthEdit/:plId', component: PlayerHealthEdit},
+
+    {path: '/playerHeartRate', redirect: '/playerHeartRate/playerHeartRateList'},
+    {path: '/playerHeartRate/playerHeartRateList', component: PlayerHeartRateList},
+    {path: '/playerHeartRate/playerHeartRateDetail/:plId', component: PlayerHeartRateDetail},
+
 ]
 const router = createRouter({
     history: createWebHashHistory(),
@@ -100,3 +126,11 @@ app.use(router)
 
 //容器挂载
 app.mount('#app')
+
+
+
+
+
+
+
+//nginx -s  reload

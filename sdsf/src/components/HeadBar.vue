@@ -18,19 +18,19 @@ export default defineComponent({
 
 <template>
   <div>
-    <el-image src="/pic/photo1.jpg" fit="cover" class="header-image"></el-image>
+    <el-image class="header-image" fit="cover" src="/pic/photo1.jpg"></el-image>
     <div class="empty-box"></div>
     <el-row :gutter="20">
       <el-col :span="4">
       </el-col>
       <el-col :span="10">
-        <el-text tag="b" size="large" class="slogan">
+        <el-text class="slogan" size="large" tag="b">
           {{ heading }}
         </el-text>
       </el-col>
       <el-col :span="3"></el-col>
       <el-col :span="6">
-        <a href="http://localhost:8080"><UserPart></UserPart></a>
+        <UserPart></UserPart>
       </el-col>
     </el-row>
   </div>
@@ -44,7 +44,8 @@ export default defineComponent({
 .empty-box {
   height: 10px;
 }
-.header-image{
+
+.header-image {
   height: 50px;
   width: 199px;
   position: absolute;

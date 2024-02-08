@@ -1,10 +1,19 @@
 <script>
 import {defineComponent} from 'vue'
-import {DataLine, Discount, MessageBox, Suitcase, User} from "@element-plus/icons-vue";
+import {
+  DataLine,
+  Discount,
+  Histogram,
+  InfoFilled,
+  MessageBox,
+  Stopwatch,
+  Suitcase,
+  User
+} from "@element-plus/icons-vue";
 
 export default defineComponent({
   name: "SideBar",
-  components: {Suitcase, Discount, User, DataLine, MessageBox},
+  components: {Stopwatch, Histogram, InfoFilled, Suitcase, Discount, User, DataLine, MessageBox},
   data: function () {
     return {
       sideBar: [
@@ -44,14 +53,41 @@ export default defineComponent({
             </router-link>
           </el-menu-item>
 
-          <el-menu-item index="3">
-            <router-link to="/player">
+          <el-sub-menu index="3">
+            <template #title>
               <el-icon>
                 <User/>
               </el-icon>
               <span>运动员管理</span>
+            </template>
+            <router-link to="/player">
+              <el-menu-item index="3-1">
+                <el-icon>
+                  <InfoFilled/>
+                </el-icon>
+                <span style="font-size: 15px">基础信息</span>
+              </el-menu-item>
             </router-link>
-          </el-menu-item>
+
+            <router-link to="/playerHealth">
+              <el-menu-item index="3-2">
+                <el-icon>
+                  <Histogram/>
+                </el-icon>
+                <span style="font-size: 15px">健康信息</span>
+              </el-menu-item>
+            </router-link>
+
+            <router-link to="/playerHeartRate">
+              <el-menu-item index="3-3">
+                <el-icon>
+                  <Stopwatch/>
+                </el-icon>
+                <span style="font-size: 15px">心率信息</span>
+              </el-menu-item>
+            </router-link>
+
+          </el-sub-menu>
 
           <el-menu-item index="4">
             <router-link to="/coach">
