@@ -116,7 +116,11 @@ export default {
     },
     updateProgress() {
       const video = this.$refs.videoPlayer;
-      this.currentProgress = video.currentTime; // 更新当前播放时间
+      try {
+        this.currentProgress = video.currentTime; // 更新当前播放时间
+      }catch (a){
+        console.log(a)
+      }
     },
     initializeProgress() {
       const video = this.$refs.videoPlayer;
@@ -131,6 +135,13 @@ export default {
       video.currentTime += 10; // 快进10秒
       if (video.currentTime > video.duration) video.currentTime = video.duration; // 防止超出视频长度
     },
+  },
+  beforeUnmount() {
+    // 检查视频元素是否存在
+    if (this.$refs.videoPlayer) {
+      // 如果存在，停止视频播放
+      this.$refs.videoPlayer.pause();
+    }
   },
 };
 </script>
