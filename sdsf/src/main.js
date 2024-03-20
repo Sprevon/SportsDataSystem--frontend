@@ -33,7 +33,7 @@ import PlayerHeartRateList from "@/components/contextBody/playerHeartRate/Player
 import PlayerHeartRateDetail from "@/components/contextBody/playerHeartRate/PlayerHeartRateDetail.vue";
 // import loginPage from "@/components/login/LoginPage.vue";
 import * as echarts from 'echarts'
-
+import loginPage from "@/components/login/LoginPage.vue";
 
 //创建容器
 const app = createApp(App)
@@ -42,8 +42,8 @@ const app = createApp(App)
 app.config.globalProperties.$echarts = echarts
 
 //配置axios
-Axios.defaults.baseURL = "http://localhost:8088"
-// Axios.defaults.baseURL = "http://112.124.17.166:8088"
+// Axios.defaults.baseURL = "http://localhost:8088"
+Axios.defaults.baseURL = "http://112.124.17.166:8088"
 app.config.globalProperties.$http = Axios
 
 //配置element-icon
@@ -60,7 +60,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 const routes = [
 
     // {path: '/', redirect: '/login'},
-    // {path: '/login', component: loginPage},
+    {path: '/login', component: loginPage},
 
     {path: '/', redirect: '/home'},
     {path: '/home', redirect: '/welcome'},

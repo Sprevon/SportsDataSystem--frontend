@@ -17,6 +17,7 @@
     "echarts": "^5.4.3",
     "element-plus": "^2.5.3",
     "font-awesome": "^4.7.0",
+    "video.js": "^8.10.0",
     "vue": "^3.2.13",
     "vue-router": "^4.2.5",
     "vuex": "^4.1.0"

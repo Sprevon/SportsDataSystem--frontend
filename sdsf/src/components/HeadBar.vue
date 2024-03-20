@@ -30,7 +30,9 @@ export default defineComponent({
       </el-col>
       <el-col :span="3"></el-col>
       <el-col :span="6">
-        <UserPart></UserPart>
+        <router-link to="/login">
+          <UserPart></UserPart>
+        </router-link>
       </el-col>
     </el-row>
   </div>
