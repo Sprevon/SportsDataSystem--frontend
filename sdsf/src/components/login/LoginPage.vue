@@ -169,7 +169,7 @@ export default {
 
 .login-background video {
   flex-grow: 1;
-  object-fit: cover; /* 或 'contain' 根据你的需求选择 */
+  object-fit: cover;
 }
 
 .background-image {
@@ -188,11 +188,24 @@ export default {
   max-width: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  -webkit-margin-after: 20px;
+  -moz-margin-start: 800px;
 }
 
 .input-container {
   margin-bottom: 1rem;
   padding-top: 0px;
+}
+
+.input-container label:last-child{
+  background-color: #707379;
+}
+
+el-input ~ label{
+  background-color: white;
+  width: 120px;
+  color: #0b8ef8;
+  margin:auto
 }
 
 label {
