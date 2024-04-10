@@ -12,7 +12,7 @@
       </video>
     </div>
     <div class="login-form">
-      <h1 class="login-title">注册 - 竞技体育数据管理系统</h1>
+      <h1 class="login-title">登录 - 竞技体育数据管理系统</h1>
       <form @submit.prevent="handleLogin">
         <div class="input-container">
           <label for="username"></label>
@@ -24,14 +24,14 @@
         </div>
         <div class="input-container">
           <label for="password"></label>
-          <el-input type="password" id="password" placeholder="请确认密码" v-model="password"/>
+          <el-input type="password" id="password2" placeholder="请确认密码" v-model="password"/>
         </div>
         <div class="input-container" style="background-color: white; display: flex">
           <label style=" background-color: white; width: 40px; margin: auto">+86</label>
-          <el-input type="password" id="phone" placeholder="手机号" v-model="password"/>
+          <el-input type="text" id="phone" placeholder="手机号" v-model="phone"/>
         </div>
         <div class="input-container" style="display: flex; background-color: white">
-          <el-input type="password" id="code" placeholder="请输入验证码" v-model="password"/>
+          <el-input type="text" id="code" placeholder="请输入验证码" v-model="config" />
           <label style=" background-color: white; width: 120px; color: #0b8ef8; margin:auto">获取验证码</label>
         </div>
         <div class="input-container" >
@@ -41,7 +41,7 @@
           </el-checkbox>
         </div>
         <div style="height: 40px"/>
-        <button type="submit" class="login-button">注册</button>
+        <button type="submit" class="login-button" @click="handleLogin">登录</button>
       </form>
     </div>
     <div class="floating-controls">
@@ -55,7 +55,7 @@
 
 <script>
 import {ElMessageBox} from "element-plus";
-import {createRouter as router} from "vue-router";
+// import {createRouter as router} from "vue-router";
 // import videojs from "video.js";
 import 'video.js/dist/video-js.css'
 
@@ -70,6 +70,8 @@ export default {
     return {
       username: '',
       password: '',
+      phone:'',
+      config:'',
       isPlay: true,
       isMuted: false, // 添加静音状态标记
       currentProgress: 0, // 当前播放时间
@@ -82,15 +84,12 @@ export default {
   methods: {
     handleLogin() {
       // 登录逻辑
-      this.$http.post("/sdsb/login", {username: this.username, password: this.password}).then(response => {
+      this.$http.post("/sdsb/login", {account: this.username, password: this.password}).then(response => {
         const code = response.data.code;
         if (code === 200) {
-          ElMessageBox.alert("登录成功", "提示", {
+          const informText = this.username + "登录成功！"
+          ElMessageBox.alert(informText, "提示", {
             confirmButtonText: "确定"
-          }).then(r => {
-            //修改成功后刷新页面
-            router.push("/welcome")
-            return r
           })
         } else {
           ElMessageBox.alert("登录失败", "提示", {

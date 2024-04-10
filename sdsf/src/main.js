@@ -42,8 +42,8 @@ const app = createApp(App)
 app.config.globalProperties.$echarts = echarts
 
 //配置axios
-// Axios.defaults.baseURL = "http://localhost:8088"
-Axios.defaults.baseURL = "http://112.124.17.166:8088"
+Axios.defaults.baseURL = "http://localhost:8088"
+// Axios.defaults.baseURL = "http://112.124.17.166:8088"
 app.config.globalProperties.$http = Axios
 
 //配置element-icon
