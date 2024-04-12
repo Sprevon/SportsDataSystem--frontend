@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta keywords="HTML5 背景与边框">
+    <meta content="图片轮转的实现">
+    <title>图片轮转的实现</title>
+    <style>
+        .demo{
+            display: flex;
+            justify-content: center; /*水平方向居中*/
+            align-items: center; /*垂直方向居中*/
+            //border-width:80px 102px 99px 98px;
+            border: #0b8ef8 dashed 20px;
+            width:796px;
+            height:621px;
+            margin:0 auto;
+            padding:30px;
+            border-image:url(ipad.png) 100/100px;
+            //background-color: black;
+            background-image: url("owel.jpg"), url("photo1.jpg"), url("photo2.jpg"), url("xlgs2.jpg");
+            background-repeat:no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+            background-position:0px 0px, -796px 0px, -1594px 0px, -2388px 0px, -3184px 0px;
+            background-size:796px 621px;
+            animation-name:myfirst;									/*设置动画名*/
+            animation-duration:32s;									/*动画周期时间*/
+            animation-timing-function:linear;						/*动画函数*/
+            animation-delay:4s;										/*动画延迟时间*/
+            animation-iteration-count:infinite;						/*动画次数*/
+            animation-direction:alternate;							/*动画方向*/
+            animation-play-state:running;							/*动画状态*/
+            background-clip: padding-box;
+        }
+
+        @keyframes myfirst											/*定义动画关键帧*/
+        {
+            0%   { background-position:0px 0px, -796px 0px, -1594px 0px, -2388px 0px, -3184px 0px;}
+            25%  { background-position:796px 0px, 0px 0px, -796px 0px, -1594px 0px, -2388px 0px;}
+            50%  { background-position:1594px 0px, 796px 0px, 0px 0px, -796px 0px, -1594px 0px;}
+            75%  { background-position:2388px 0px, 1594px 0px, 796px 0px, 0px 0px, -796px 0px;}
+            100% { background-position:3184px 0px, 2388px 0px, 1594px 0px, 796px 0px, 0px 0px;}
+        }
+    </style>
+</head>
+<body>
+<div class="demo"></div>
+</body>
+</html>
