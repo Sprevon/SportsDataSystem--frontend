@@ -9,7 +9,7 @@ export default defineComponent({
   },
   data() {
     return {
-      heading: '竞技体育数据管理系统',
+      heading: '智柔监测',
     }
   },
 
@@ -18,7 +18,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <el-image class="header-image" fit="cover" src="/pic/photo1.jpg"></el-image>
+    <el-image class="header-image" fit="contain" src="/pic/icon(new).png"></el-image>
     <div class="empty-box"></div>
     <el-row :gutter="20">
       <el-col :span="4">

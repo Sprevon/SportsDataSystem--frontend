@@ -21,7 +21,7 @@ export default defineComponent({
 }
 
 .watermark::after {
-  content: "欢迎使用竞技体育数据管理系统";
+  content: "欢迎使用智柔监测";
   position: absolute;
   top: 300px;
   left: 5%;
