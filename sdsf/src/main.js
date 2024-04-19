@@ -34,6 +34,8 @@ import PlayerHeartRateDetail from "@/components/contextBody/playerHeartRate/Play
 // import loginPage from "@/components/login/LoginPage.vue";
 import * as echarts from 'echarts'
 import loginPage from "@/components/login/LoginPage.vue";
+import CalendarV from "@/views/calendar/CalendarV.vue";
+import FigureV from "@/views/figure/FigureV.vue";
 
 //创建容器
 const app = createApp(App)
@@ -99,6 +101,8 @@ const routes = [
     {path: '/playerHeartRate/playerHeartRateList', component: PlayerHeartRateList},
     {path: '/playerHeartRate/playerHeartRateDetail/:plId', component: PlayerHeartRateDetail},
 
+    {path: '/calendar', component: CalendarV},
+    {path: '/figure', component: FigureV}
 ]
 const router = createRouter({
     history: createWebHashHistory(),
