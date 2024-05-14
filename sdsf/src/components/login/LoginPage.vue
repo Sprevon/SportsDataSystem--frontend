@@ -4,8 +4,8 @@
       <video ref="videoPlayer"
              autoplay
              loop
-             width="1500"
-             height="700"
+             width="100%"
+             height="100%"
              @timeupdate="updateProgress"
              @loadedmetadata="initializeProgress">
         <source src="video/oceans.mp4" type="video/mp4" />
@@ -13,7 +13,7 @@
     </div>
     <div class="login-form">
       <h1 class="login-title">登录 - 竞技体育数据管理系统</h1>
-      <form @submit.prevent="handleLogin">
+      <form >
         <div class="input-container">
           <label for="username"></label>
           <el-input type="text" id="username" placeholder="请输入用户名" v-model="username"/>
@@ -41,7 +41,8 @@
           </el-checkbox>
         </div>
         <div style="height: 40px"/>
-        <button type="submit" class="login-button" @click="handleLogin">登录</button>
+        <button  class="login-button" @click="handleLogin">登录</button>
+        <button  class="login-button" @click="handleRegister">注册</button>
       </form>
     </div>
     <div class="floating-controls">
@@ -58,6 +59,7 @@ import {ElMessageBox} from "element-plus";
 // import {createRouter as router} from "vue-router";
 // import videojs from "video.js";
 import 'video.js/dist/video-js.css'
+import useTokenStore from "@/stoers/useToken";
 
 export default {
   props: {
@@ -84,15 +86,34 @@ export default {
   methods: {
     handleLogin() {
       // 登录逻辑
-      this.$http.post("/sdsb/login", {account: this.username, password: this.password}).then(response => {
+      console.log("处理登录！")
+      this.$http.post("/sdsb/login", {username: this.username, password: this.password}).then(response => {
         const code = response.data.code;
         if (code === 200) {
+          useTokenStore().token = {username: this.username, password: this.password} //登录成功则存入token
           const informText = this.username + "登录成功！"
           ElMessageBox.alert(informText, "提示", {
             confirmButtonText: "确定"
           })
         } else {
           ElMessageBox.alert("登录失败", "提示", {
+            confirmButtonText: "确定"
+          })
+        }
+      })
+    },
+    handleRegister(){
+      //注册逻辑
+      this.$http.post("/sdsb/register", {username: this.username, password: this.password}).then(response => {
+        const code = response.data.code;
+        if (code === 200) {
+          useTokenStore().token = {username: this.username, password: this.password} //登录成功则存入token
+          const informText = this.username + "注册成功！"
+          ElMessageBox.alert(informText, "提示", {
+            confirmButtonText: "确定"
+          })
+        } else {
+          ElMessageBox.alert("注册失败", "提示", {
             confirmButtonText: "确定"
           })
         }
@@ -220,7 +241,8 @@ input {
 }
 
 .login-button {
-  width: 100%;
+  width: 38%;
+  margin: 20px;
   padding: 1rem;
   border: none;
   border-radius: 5px;

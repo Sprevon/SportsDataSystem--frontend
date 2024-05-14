@@ -1,5 +1,6 @@
 <script>
 import {defineComponent} from 'vue'
+import useTokenStore from "@/stoers/useToken";
 
 export default defineComponent({
   name: "UserPart",
@@ -8,18 +9,14 @@ export default defineComponent({
     return {
       userData: {
         username: '',
-        userId: ''
       }
     }
   },
-  methods() {
-    this.$http.post('').then(response => {
-      this.userData.username = response.data.username;
-      this.userData.userId = response.data.userId;
-    })
-  },
-  created() {
-
+  computed:{
+    username(){
+      const useStore = useTokenStore()
+      return useStore.token.username
+    }
   }
 })
 </script>
@@ -32,7 +29,7 @@ export default defineComponent({
         <font-awesome-icon size="xl" icon="fa-solid fa-circle-user" />
       </el-col>
       <el-col :span="20" class="greeting-text">
-        <el-text tag="b" size="large" >欢迎{{ userData.username === ''? '您' : ',' + userData.username}}</el-text>
+        <el-text tag="b" size="large" >欢迎{{ username === ''? '您' : ',' + username}}</el-text>
       </el-col>
     </el-row>
   </div>

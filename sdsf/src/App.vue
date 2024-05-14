@@ -13,9 +13,6 @@
           <context-body></context-body>
         </el-main>
       </el-container>
-      <el-footer>
-        <div></div>
-      </el-footer>
     </el-container>
   </div>
 </template>

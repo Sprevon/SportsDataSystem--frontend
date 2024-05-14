@@ -18,6 +18,8 @@
     "element-plus": "^2.5.3",
     "font-awesome": "^4.7.0",
     "moment": "^2.30.1",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
     "video.js": "^8.10.0",

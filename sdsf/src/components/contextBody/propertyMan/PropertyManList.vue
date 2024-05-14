@@ -124,7 +124,7 @@ export default defineComponent({
           <el-table-column label="操作" width="auto">
             <template #default="scope">
               <el-row :gutter="5">
-                <el-col span="4">
+                <el-col :span="4">
                   <el-tooltip
                       class="box-item"
                       content="管理员编辑"
@@ -137,7 +137,7 @@ export default defineComponent({
                   </el-tooltip>
                 </el-col>
 
-                <el-col span="4">
+                <el-col :span="4">
                   <el-tooltip
                       class="box-item"
                       content="删除管理员"

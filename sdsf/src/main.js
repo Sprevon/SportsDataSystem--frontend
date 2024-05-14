@@ -1,7 +1,7 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import Axios from 'axios'
-import ElementPlus from 'element-plus'
+import ElementPlus, {ElMessage} from 'element-plus'
 import "element-plus/dist/index.css"
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import "@/css/base.css"
@@ -36,6 +36,8 @@ import * as echarts from 'echarts'
 import loginPage from "@/components/login/LoginPage.vue";
 import CalendarV from "@/views/calendar/CalendarV.vue";
 import FigureV from "@/views/figure/FigureV.vue";
+import {createPinia} from "pinia";
+import useTokenStore from "@/stoers/useToken";
 
 //创建容器
 const app = createApp(App)
@@ -46,7 +48,39 @@ app.config.globalProperties.$echarts = echarts
 //配置axios
 Axios.defaults.baseURL = "http://localhost:8088"
 // Axios.defaults.baseURL = "http://112.124.17.166:8088"
+//发送请求前拦截
+Axios.interceptors.request.use(
+    config => {
+        const useToken = useTokenStore()
+        if (useToken.token.username !== '') {
+            console.log("请求头token===>", useToken.token)
+            config.headers.username = useToken.token.username
+            config.headers.password = useToken.token.password
+        }
+        return config;
+    },
+    error => {
+        return Promise.reject(error)
+    }
+)
+Axios.interceptors.response.use(
+    response => {
+        console.log("响应数据", response)
+        if (response.data.code !== 200){
+            ElMessage.error(response.data.message)
+        }
+        return response
+    }, error => {
+        if (error.response.status === 401){
+            ElMessage.error("未登录！")
+        }
+    }
+)
 app.config.globalProperties.$http = Axios
+
+//持久化配置
+const pinia = createPinia()
+app.use(pinia)
 
 //配置element-icon
 app.use(ElementPlus)
@@ -130,11 +164,6 @@ app.use(router)
 
 //容器挂载
 app.mount('#app')
-
-
-
-
-
 
 
 //nginx -s  reload
