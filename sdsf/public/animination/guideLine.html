@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GuideLine</title>
+    <style type="text/css">
+        * { /*清除所有元素默认的内外边距*/
+            padding: 0px;
+            margin: 0px;
+            background-color: #000;;
+        }
+
+        .container {
+            font-family: "微软雅黑";
+            margin: 0 auto;
+            padding: 100px 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        a:hover,
+        a:focus {
+            outline: none; /*清除虚线框*/
+            color: #f99;
+            text-shadow: 0 0 0.3em rgba(255, 100, 200, 0.3), 0.04em 0.04em 0 #112,
+            0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66,
+            0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+            animation: pulseb 300ms ease infinite alternate;
+        }
+
+        a{
+            position: relative;
+            display: inline-block;
+            margin: 15px 25px;
+            outline: none;
+            text-decoration: none;
+            letter-spacing: 1px; /*字符间距*/
+            font-weight: 400; /*字体加粗*/
+            margin: 15px;
+            width: 200px;
+            font-size: 90px;
+            color: #88e;
+            text-shadow: 0 0 0.3em rgba(200, 200, 255, 0.3), 0.04em 0.04em 0 #112,
+            0.045em 0.045em 0 #88e, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #66c,
+            0.14em 0.14em 0 #112, 0.145em 0.145em 0 #44a;
+            animation: plusea 300ms ease infinite alternate;
+        }
+
+        .odd{
+
+        }
+
+        .nav01 a:hover span,
+        .nav01 a:focus span {
+
+        }
+
+        @keyframes plusea {
+            0% {
+                text-shadow: 0 0 0.3em rgba(200, 200, 255, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #88e, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #66c,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #aaf;
+            }
+            50% {
+                text-shadow: 0 0 0.3em rgba(200, 200, 255, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #88e, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #aaf,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #44a;
+            }
+            75% {
+                text-shadow: 0 0 0.3em rgba(200, 200, 255, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #aaf, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #66c,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #44a;
+            }
+            100% {
+                text-shadow: 0 0 0.3em rgba(200, 200, 255, 0.4), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #88e, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #66c,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #44a;
+            }
+        }
+
+        @keyframes pulseb {
+            0% {
+                text-shadow: 0 0 0.3em rgba(255, 100, 200, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
+            }
+            50% {
+                text-shadow: 0 0 0.3em rgba(255, 100, 200, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+            }
+            75% {
+                text-shadow: 0 0 0.3em rgba(255, 100, 200, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+            }
+            100% {
+                text-shadow: 0 0 0.3em rgba(255, 100, 200, 0.3), 0.04em 0.04em 0 #112,
+                0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66,
+                0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="#首页">首页</a>
+    <a href="#公司简介">公司简介</a>
+    <a href="#关于我们">关于我们</a>
+    <a href="#联系我们">联系我们</a>
+    <a href="#网站地图">网站地图</a>
+</div>
+</body>
+</html>
