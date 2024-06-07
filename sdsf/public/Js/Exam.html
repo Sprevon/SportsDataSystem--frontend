@@ -1,10 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Exam</title>
+
+    <style type="text/css">
+        .body_content {
+            width: 400px;
+            border: 1px solid #E1E1E1;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .MainTable {
+            line-height: 45px;
+        }
+
+        .nextdiv {
+            margin-top: 20px;
+        }
+
+        .body {
+            /*设置页面宽度为100%*/
+            width: 100%;
+            /*设置页面宽度为100%*/
+            height: 100%;
+        }
+    </style>
 </head>
+
 <body>
-$END$
+    <!--页面内容 begin-->
+    <div id="bodyContent" class="body_content">
+        <form method="post">
+            <table class="MainTable" id="QuestionBox">
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold">第一题：</td>
+                    </tr>
+                    <tr>
+                        <td>世界天气的推动力是：</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" />
+                                A、太阳</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" />
+                                B、地球</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" />
+                                C、哥白尼</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="TimingInfo">
+                <div><span>倒计时：<span id="save_info">45</span>秒</span></div>
+                <div class="nextdiv">
+                    <input type="button" name="form_save" onclick="next()" value="下一题" />
+                </div>
+            </div>
+        </form>
+        <table id="question_4" style="display: none;">
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold">第二题：</td>
+                </tr>
+                <tr>
+                    <td>农夫养了17只羊，有5只死了，问一共死了几只？</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            A、5只</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            B、12只</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            C、11只</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="question_3" style="display: none;">
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold">第三题：</td>
+                </tr>
+                <tr>
+                    <td>下面哪种生物的脑最大：</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            A、大象</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            B、抹香鲸</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            C、大头儿子</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="question_2" style="display: none;">
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold">第四题：</td>
+                </tr>
+                <tr>
+                    <td>欧鳇寿命：</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            A、极短</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            B、约20年</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            C、高于100年</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="question_1" style="display: none;">
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold">第五题：</td>
+                </tr>
+                <tr>
+                    <td>1970年，霍金博士成功证明了：</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            A、黑洞边界定义</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            B、时间旅行的可行性</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <input type="radio" />
+                            C、乘法结合律</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--页面内容 end-->
+    <!--JS 执行-->
+    <script>
+        var num = 4;
+        var i = 45;
+        var logs = setInterval("log()", 1000)
+        function log() {
+            console.log("运行");
+        }
+        //声明计时函数
+        var intervalid;
+        intervalid = setInterval("Timing()", 500);/*单位为毫秒*/
+        function Timing() {
+            i = i - 0.5;
+            document.getElementById("save_info").innerHTML = i;
+            if (i == 0) {
+                //执行隐藏函数
+                next();
+                //清除计时函数
+                clearInterval(intervalid);
+            }
+        }
+        //执行答题结束操作
+        function next() {
+            //获取展示内容元素对象
+            var main = document.getElementById("QuestionBox");
+            //判断是否为最后一题
+            if (num == 0) {
+                //隐藏倒计时及答题按钮
+                document.getElementById("TimingInfo").style.display = "none";
+                main.innerHTML = "答题结束";
+            } else {
+                //显示下一道题目
+                var content = document.getElementById("question_" + num).innerHTML;
+                main.innerHTML = content;
+                //重新执行计时语句
+                i = 45;
+                document.getElementById("save_info").innerHTML = i;
+                clearInterval(intervalid);
+                intervalid = setInterval("Timing()", 500);
+            }
+            num--;
+        }
+    </script>
 </body>
+
 </html>
